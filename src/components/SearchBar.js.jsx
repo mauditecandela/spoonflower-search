@@ -9,10 +9,16 @@ class SearchBar extends Component {
     this.handleSearch = this.props.handleSearch;
   }
 
+  buildUrl(event) {
+    let sorting_param = this.props.sorting ? `&sort=${this.props.sorting}` : ''
+    let availability_param = this.props.availability ? `&availability=${this.props.availability}` : ''
+    this.url = `http://search.spoonflower.com/searchv2/designs?q=${this.searchQuery.value}${sorting_param}${availability_param}`
+  }
+
   handleClick(event) {
-    let url = `http://search.spoonflower.com/searchv2/designs?q=${this.searchQuery.value}&sort=${this.props.sorting}&availability=${this.props.availability}`
-    console.log(url);
-    fetch(url)
+    this.buildUrl(event);
+    console.log(this.url);
+    fetch(this.url)
       .then(response => response.json())
       .then(data => {
         this.handleSearch(data.results);
