@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Dropdown from './Dropdown.js.jsx';
 
 import '../styles/SearchBar.css';
