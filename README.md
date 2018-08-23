@@ -3,7 +3,7 @@ Small application built in React.js that works together with Spoonflower API. Th
 
 How to run:
 
-- git clone git@github.com:mauditecandela/spoonflower-search.git
+- git clone `git@github.com:mauditecandela/spoonflower-search.git`
 - npm install
 - npm start
 
