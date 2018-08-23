@@ -14,7 +14,6 @@ class SearchBar extends Component {
 
   handleClick(event) {
     this.buildUrl(event);
-    console.log(this.url);
     fetch(this.url)
       .then(response => response.json())
       .then(data => {
