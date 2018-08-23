@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Dropdown from './Dropdown.js.jsx';
+
 import '../styles/SearchBar.css';
 
 class SearchBar extends Component {
@@ -8,7 +10,9 @@ class SearchBar extends Component {
   }
 
   handleClick(event) {
-    fetch(`http://search.spoonflower.com/searchv2/designs?q=${this.searchQuery.value}`)
+    let url = `http://search.spoonflower.com/searchv2/designs?q=${this.searchQuery.value}&sort=${this.props.sorting}`
+    console.log(url);
+    fetch(url)
       .then(response => response.json())
       .then(data => {
         this.handleSearch(data.results);
@@ -20,7 +24,8 @@ class SearchBar extends Component {
     return (
       <div className="search-bar">
         <input ref={(input) => this.searchQuery = input} className="search-box" />
-        <button onClick={this.handleClick.bind(this)} class="search-button">Search</button>
+        <Dropdown id="sorting_options" options={this.props.availableSortings} title="Sort by" handleSelection={this.props.handleSelection} />
+        <button onClick={this.handleClick.bind(this)} className="search-button">Search</button>
       </div>
     )
   }
