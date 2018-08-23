@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Header from './components/Header.js.jsx';
+import ProductList from './components/ProductList.js.jsx';
+import SearchBar from './components/SearchBar.js.jsx'
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      products: []
+    }
+  }
+
+  componentDidMount() {
+    fetch('http://search.spoonflower.com/searchv2/designs')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({products: data.results })
+    })
+      .catch(err => console.error(this.props.url, err.toString()));
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Header />
+        <SearchBar />
+        <ProductList products={this.state.products}/>
       </div>
     );
   }
