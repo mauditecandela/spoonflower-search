@@ -5,12 +5,16 @@ class ProductList extends Component {
     const products = this.props.products.map((product) => {
       return (
         <div key={product.id}>
-          <div className="product-name">{product.name}</div>
+          <img className="product-image" src={product.thumbnail_url} alt={product.short_description}></img>
+          <div className="product-information">
+            <div className="product-name">{product.name}</div>
+            <div className="product-author">by {product.user.screen_name}</div>
+          </div>
         </div>
       )
     })
     return (
-      <div>
+      <div className="product-list">
         {products}
       </div>
     )
