@@ -1,0 +1,15 @@
+.header {
+  padding: 20px 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.spoonflower-logo {
+  height: 50px;
+}
+
+h1 {
+  font-size: 14px;
+  padding: 20px 5px 10px 20px;
+}
