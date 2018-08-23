@@ -16,14 +16,21 @@ class App extends Component {
       availabilityOptions: ['for_sale', 'not_for_sale', 'all'],
       limitOptions: [50, 100, 150, 200]
     }
+    this.performSearch = this.performSearch.bind(this);
     this.handleRequest = this.handleRequest.bind(this);
   }
 
   componentDidMount() {
-    fetch('http://search.spoonflower.com/searchv2/designs')
+    this.performSearch('http://search.spoonflower.com/searchv2/designs');
+  }
+
+  performSearch(url){
+    fetch(url)
       .then(response => response.json())
       .then(data => {
-        this.setState({products: data.results })
+        let newState = {};
+        newState["products"] = data.results;
+        this.handleRequest(newState);
     })
       .catch(err => console.error(this.props.url, err.toString()));
   }
@@ -40,10 +47,11 @@ class App extends Component {
           sortingOptions={this.state.sortingOptions}
           availabilityOptions={this.state.availabilityOptions}
           limitOptions={this.state.limitOptions}
-          handleRequest={this.handleRequest}
           sorting={this.state.sorting}
           availability={this.state.availability}
           limit={this.state.limit}
+          handleRequest={this.handleRequest}
+          performSearch={this.performSearch}
            />
         <ProductList products={this.state.products}/>
       </div>

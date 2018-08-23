@@ -14,15 +14,8 @@ class SearchBar extends Component {
 
   handleClick(event) {
     this.buildUrl(event);
-    fetch(this.url)
-      .then(response => response.json())
-      .then(data => {
-        let newState = {};
-        newState["products"] = data.results;
-        this.props.handleRequest(newState);
-    })
-      .catch(err => console.error(this.props.url, err.toString()));
-    }
+    this.props.performSearch(this.url);
+  }
 
   render() {
     return (
