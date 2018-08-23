@@ -4,14 +4,14 @@ import '../styles/Dropdown.css'
 
 class Dropdown extends Component {
   componentWillMount() {
-    this.handleSelection = this.props.handleSelection;
+    this.handleRequest = this.props.handleRequest;
 
   }
 
   onChange(e){
     let newState = {}
     newState[this.props.type] = e.target.value
-    this.handleSelection(newState);
+    this.handleRequest(newState);
   }
 
   render() {

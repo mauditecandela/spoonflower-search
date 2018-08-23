@@ -35,19 +35,19 @@ class SearchBar extends Component {
         <Dropdown id="sorting_options"
           options={this.props.sortingOptions}
           title="Sort by"
-          handleSelection={this.props.handleSelection}
+          handleRequest={this.props.handleRequest}
           type="sorting" />
 
         <Dropdown id="availability_options"
           options={this.props.availabilityOptions}
           title="Availability"
-          handleSelection={this.props.handleSelection}
+          handleRequest={this.props.handleRequest}
           type="availability" />
 
         <Dropdown id="limit_options"
           options={this.props.limitOptions}
           title="Number of products"
-          handleSelection={this.props.handleSelection}
+          handleRequest={this.props.handleRequest}
           type="limit" />
 
         <button onClick={this.handleClick.bind(this)} className="search-button">Search</button>

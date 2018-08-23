@@ -16,7 +16,7 @@ class App extends Component {
       availabilityOptions: ['for_sale', 'not_for_sale', 'all'],
       limitOptions: [50, 100, 150, 200]
     }
-    this.handleSelection = this.handleSelection.bind(this);
+    this.handleRequest = this.handleRequest.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -33,7 +33,7 @@ class App extends Component {
     this.setState({ products })
   }
 
-  handleSelection(newState) {
+  handleRequest(newState) {
       this.setState(newState)
   }
 
@@ -45,7 +45,7 @@ class App extends Component {
           sortingOptions={this.state.sortingOptions}
           availabilityOptions={this.state.availabilityOptions}
           limitOptions={this.state.limitOptions}
-          handleSelection={this.handleSelection}
+          handleRequest={this.handleRequest}
           sorting={this.state.sorting}
           availability={this.state.availability}
           limit={this.state.limit}
