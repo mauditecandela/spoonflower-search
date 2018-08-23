@@ -11,8 +11,10 @@ class App extends Component {
       products: [],
       sorting: '',
       availability: '',
-      availableSortings: ['classic', 'freshtastic', 'relevant'],
-      availabilityOptions: ['for_sale', 'not_for_sale', 'all']
+      limit: '',
+      sortingOptions: ['classic', 'freshtastic', 'relevant'],
+      availabilityOptions: ['for_sale', 'not_for_sale', 'all'],
+      limitOptions: [50, 100, 150, 200]
     }
     this.handleSelection = this.handleSelection.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -40,11 +42,13 @@ class App extends Component {
       <div>
         <Header />
         <SearchBar handleSearch={this.handleSearch}
-          availableSortings={this.state.availableSortings}
+          sortingOptions={this.state.sortingOptions}
           availabilityOptions={this.state.availabilityOptions}
+          limitOptions={this.state.limitOptions}
           handleSelection={this.handleSelection}
           sorting={this.state.sorting}
           availability={this.state.availability}
+          limit={this.state.limit}
            />
         <ProductList products={this.state.products}/>
       </div>

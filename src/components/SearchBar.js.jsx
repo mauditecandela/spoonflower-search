@@ -10,9 +10,10 @@ class SearchBar extends Component {
   }
 
   buildUrl(event) {
-    let sorting_param = this.props.sorting ? `&sort=${this.props.sorting}` : ''
-    let availability_param = this.props.availability ? `&availability=${this.props.availability}` : ''
-    this.url = `http://search.spoonflower.com/searchv2/designs?q=${this.searchQuery.value}${sorting_param}${availability_param}`
+    let sorting_param = this.props.sorting ? `&sort=${this.props.sorting}` : '';
+    let availability_param = this.props.availability ? `&availability=${this.props.availability}` : '';
+    let limit_param = this.props.limit ? `&limit=${this.props.limit}` : ''
+    this.url = `http://search.spoonflower.com/searchv2/designs?q=${this.searchQuery.value}${sorting_param}${availability_param}${limit_param}`
   }
 
   handleClick(event) {
@@ -32,7 +33,7 @@ class SearchBar extends Component {
         <input ref={(input) => this.searchQuery = input} className="search-box" />
 
         <Dropdown id="sorting_options"
-          options={this.props.availableSortings}
+          options={this.props.sortingOptions}
           title="Sort by"
           handleSelection={this.props.handleSelection}
           type="sorting" />
@@ -42,6 +43,12 @@ class SearchBar extends Component {
           title="Availability"
           handleSelection={this.props.handleSelection}
           type="availability" />
+
+        <Dropdown id="limit_options"
+          options={this.props.limitOptions}
+          title="Number of products"
+          handleSelection={this.props.handleSelection}
+          type="limit" />
 
         <button onClick={this.handleClick.bind(this)} className="search-button">Search</button>
       </div>
