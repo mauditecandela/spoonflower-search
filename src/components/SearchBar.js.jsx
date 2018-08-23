@@ -5,10 +5,6 @@ import Dropdown from './Dropdown.js.jsx';
 import '../styles/SearchBar.css';
 
 class SearchBar extends Component {
-  componentWillMount() {
-    this.handleSearch = this.props.handleSearch;
-  }
-
   buildUrl(event) {
     let sorting_param = this.props.sorting ? `&sort=${this.props.sorting}` : '';
     let availability_param = this.props.availability ? `&availability=${this.props.availability}` : '';
@@ -22,7 +18,9 @@ class SearchBar extends Component {
     fetch(this.url)
       .then(response => response.json())
       .then(data => {
-        this.handleSearch(data.results);
+        let newState = {};
+        newState["products"] = data.results;
+        this.props.handleRequest(newState);
     })
       .catch(err => console.error(this.props.url, err.toString()));
     }

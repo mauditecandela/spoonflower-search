@@ -17,7 +17,6 @@ class App extends Component {
       limitOptions: [50, 100, 150, 200]
     }
     this.handleRequest = this.handleRequest.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -27,10 +26,6 @@ class App extends Component {
         this.setState({products: data.results })
     })
       .catch(err => console.error(this.props.url, err.toString()));
-  }
-
-  handleSearch(products) {
-    this.setState({ products })
   }
 
   handleRequest(newState) {

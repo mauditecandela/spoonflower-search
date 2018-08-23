@@ -3,15 +3,10 @@ import React, { Component } from 'react';
 import '../styles/Dropdown.css'
 
 class Dropdown extends Component {
-  componentWillMount() {
-    this.handleRequest = this.props.handleRequest;
-
-  }
-
   onChange(e){
     let newState = {}
     newState[this.props.type] = e.target.value
-    this.handleRequest(newState);
+    this.props.handleRequest(newState);
   }
 
   render() {
