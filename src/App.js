@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       products: []
     }
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -21,12 +22,15 @@ class App extends Component {
       .catch(err => console.error(this.props.url, err.toString()));
   }
 
+  handleSearch(products) {
+    this.setState({ products })
+  }
 
   render() {
     return (
       <div>
         <Header />
-        <SearchBar />
+        <SearchBar handleSearch={this.handleSearch}/>
         <ProductList products={this.state.products}/>
       </div>
     );
