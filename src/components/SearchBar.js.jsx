@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import '../styles/SearchBar.css';
+
 class SearchBar extends Component {
   componentWillMount() {
     this.handleSearch = this.props.handleSearch;
@@ -16,9 +18,9 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
-        <input ref={(input) => this.searchQuery = input} />
-        <button onClick={this.handleClick.bind(this)}>Search</button>
+      <div className="search-bar">
+        <input ref={(input) => this.searchQuery = input} className="search-box" />
+        <button onClick={this.handleClick.bind(this)} class="search-button">Search</button>
       </div>
     )
   }
