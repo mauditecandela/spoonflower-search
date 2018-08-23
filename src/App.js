@@ -8,8 +8,11 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      products: []
+      products: [],
+      sorting: 'classic',
+      availableSortings: ['classic', 'freshtastic', 'relevant']
     }
+    this.handleSelection = this.handleSelection.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -26,11 +29,17 @@ class App extends Component {
     this.setState({ products })
   }
 
+  handleSelection(newState) {
+      console.log(newState);
+      this.setState(newState)
+      console.log(this.state)
+  }
+
   render() {
     return (
       <div>
         <Header />
-        <SearchBar handleSearch={this.handleSearch}/>
+        <SearchBar handleSearch={this.handleSearch} availableSortings={this.state.availableSortings} sorting={this.state.sorting} handleSelection={this.handleSelection} />
         <ProductList products={this.state.products}/>
       </div>
     );
