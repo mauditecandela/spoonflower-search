@@ -9,8 +9,10 @@ class App extends Component {
     super(props);
     this.state = {
       products: [],
-      sorting: 'classic',
-      availableSortings: ['classic', 'freshtastic', 'relevant']
+      sorting: '',
+      availability: '',
+      availableSortings: ['classic', 'freshtastic', 'relevant'],
+      availabilityOptions: ['for_sale', 'not_for_sale', 'all']
     }
     this.handleSelection = this.handleSelection.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -30,16 +32,20 @@ class App extends Component {
   }
 
   handleSelection(newState) {
-      console.log(newState);
       this.setState(newState)
-      console.log(this.state)
   }
 
   render() {
     return (
       <div>
         <Header />
-        <SearchBar handleSearch={this.handleSearch} availableSortings={this.state.availableSortings} sorting={this.state.sorting} handleSelection={this.handleSelection} />
+        <SearchBar handleSearch={this.handleSearch}
+          availableSortings={this.state.availableSortings}
+          availabilityOptions={this.state.availabilityOptions}
+          handleSelection={this.handleSelection}
+          sorting={this.state.sorting}
+          availability={this.state.availability}
+           />
         <ProductList products={this.state.products}/>
       </div>
     );
