@@ -5,10 +5,13 @@ import '../styles/Dropdown.css'
 class Dropdown extends Component {
   componentWillMount() {
     this.handleSelection = this.props.handleSelection;
+
   }
 
   onChange(e){
-    this.handleSelection({sorting: e.target.value});
+    let newState = {}
+    newState[this.props.type] = e.target.value
+    this.handleSelection(newState);
   }
 
   render() {
